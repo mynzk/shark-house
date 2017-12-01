@@ -1,14 +1,16 @@
-var path = require('path');
-var webpack = require('webpack');
+const path = require('path');
+const webpack = require('webpack');
+const sourcePath = path.resolve(__dirname, 'src/index');
+const outputPath = path.join(__dirname, 'dist');
 
 module.exports = {
     entry: [
         'webpack-hot-middleware/client?reload=true',
-        './src/index'
+        sourcePath
     ],
     devtool: 'source-map',
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: outputPath,
         filename: 'bundle.js',
         publicPath: '/static/'
     },
@@ -18,20 +20,36 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin()
     ],
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.js$/,
+                test: /\.(js|jsx)?$/,
                 exclude: /node_modules/,
-                loaders: ['babel-loader']
+                use: ["babel-loader"]
             },
             {
                 test: /\.(png|jpg)$/,
-                loader: 'url-loader?limit=8192'
+                use: 'url-loader?limit=8192'
+            },
+            {
+                test: /\.css$/,
+                use: ["style-loader",'css-loader']
+            },
+            {
+                test: /\.less$/,
+                use: ["style-loader",'css-loader', 'less-loader']
             },
             {
                 test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
-            }
+                 use: ["style-loader",'css-loader', 'sass-loader']
+            },
+        ]
+    },
+
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        modules: [
+          sourcePath,
+          'node_modules'
         ]
     }
 }
