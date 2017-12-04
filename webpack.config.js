@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const sourcePath = path.resolve(__dirname, 'src/index');
 const outputPath = path.join(__dirname, 'dist');
 
@@ -17,7 +18,11 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new ExtractTextPlugin({
+            filename: 'style.css',
+            allChunks: true
+        })
     ],
     module: {
         rules: [
@@ -32,15 +37,27 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ["style-loader",'css-loader']
+                use: ExtractTextPlugin.extract({
+                  fallback: 'style-loader', 
+                  use: 'css-loader' 
+                }),
+                exclude: /node_modules/,
             },
             {
                 test: /\.less$/,
-                use: ["style-loader",'css-loader', 'less-loader']
+                use: ExtractTextPlugin.extract({
+                  fallback: 'style-loader', 
+                  use: ['css-loader', 'less-loader'] 
+                }),
+                exclude: /node_modules/
             },
             {
                 test: /\.scss$/,
-                 use: ["style-loader",'css-loader', 'sass-loader']
+                use: ExtractTextPlugin.extract({
+                  fallback: 'style-loader', 
+                  use: ['css-loader', 'sass-loader'] 
+                }),
+                exclude: /node_modules/
             },
         ]
     },

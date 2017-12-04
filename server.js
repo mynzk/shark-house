@@ -98,5 +98,5 @@ io.on('connection', function(socket) {
 
 
 server.listen(8300, function(err) {
-    console.log('Listening at *:8900');
+    console.log('Listening at *:8300');
 });

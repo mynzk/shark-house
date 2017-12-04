@@ -1,0 +1,46 @@
+{
+    //文件名 .eslintrc.json
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "commonjs": true
+    },
+    "extends": "eslint:recommended",
+     "ecmaFeatures": {
+        "jsx": true,
+        "experimentalObjectRestSpread": true
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+        "html", "react", "babel"
+    ],
+    "rules": {
+        "indent": [
+            0,
+            4
+        ],
+        "linebreak-style": [
+            0,
+            "unix"
+        ],
+        "no-unused-vars": [
+            1
+        ],
+        "no-mixed-spaces-and-tabs": [
+            0
+        ],
+        "no-empty": [
+            1
+        ],
+        "no-unused-labels":0,
+        "no-console": 0,
+        "no-redeclare": 1,
+        "react/jsx-uses-react": 2,
+        "react/jsx-uses-vars": 2,
+        "react/react-in-jsx-scope": 2
+        "eqeqeq": "off",
+        "curly": "warn",
+        "quotes": ["warn", "double"]
+    }
+}
