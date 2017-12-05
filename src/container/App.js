@@ -65,6 +65,6 @@ export default class App extends Component {
 				</div>
 			</div>)
 		}
-		return (<div>{renderDOM}</div>)
+		return (<div className="chat-content">{renderDOM}</div>)
 	}
 }
