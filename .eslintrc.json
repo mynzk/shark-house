@@ -38,9 +38,6 @@
         "no-redeclare": 1,
         "react/jsx-uses-react": 2,
         "react/jsx-uses-vars": 2,
-        "react/react-in-jsx-scope": 2,
-        "eqeqeq": "off",
-        "curly": "warn",
-        "quotes": ["warn", "double"]
+        "react/react-in-jsx-scope": 2
     }
 }

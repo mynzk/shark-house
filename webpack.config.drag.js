@@ -1,7 +1,8 @@
+
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const sourcePath = path.resolve(__dirname, 'src/index');
+const sourcePath = path.resolve(__dirname, 'src/drag');
 const outputPath = path.join(__dirname, 'dist');
 
 module.exports = {
