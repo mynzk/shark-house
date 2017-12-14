@@ -89,17 +89,17 @@ export default class ChatRoom extends Component {
 
 	render() {
 		return(
-    <div className="chat-room">
-    <div className="welcome">
-            <div className="room-name">鱼头的聊天室 | {this.state.myName}</div>
-            <div className="button">
-    <button onClick={this.handleLogout}>登出</button>
+			<div className="chat-room">
+			    <div className="welcome">
+		            <div className="room-name">鱼头的聊天室 | {this.state.myName}</div>
+		            <div className="button">
+			    　　　　<button onClick={this.handleLogout}>登出</button>
 					</div>
 				</div>
-    <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
-    <div ref="chatArea">
-    <Messages messages={this.state.messages} myId={this.state.myId} />
-    <ChatInput myId={this.state.myId} myName={this.state.myName} socket={this.state.socket}/>
+			    <RoomStatus onlineCount={this.state.onlineCount} userhtml={this.state.userhtml}/>
+			    <div>
+				    <Messages messages={this.state.messages} myId={this.state.myId} />
+				    <ChatInput myId={this.state.myId} myName={this.state.myName} socket={this.state.socket}/>
 				</div>
 			</div>)
 	}
